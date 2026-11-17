@@ -1,0 +1,18 @@
+# Flutter / Dart
+.dart_tool/
+.packages
+.flutter-plugins
+.flutter-plugins-dependencies
+build/
+.idea/
+.vscode/
+*.iml
+*.log
+
+# Platform folders are generated in CI (see .github/workflows/build-apk.yml)
+/android/
+/ios/
+
+# Local secrets / scratch
+.env
+.scaffold/

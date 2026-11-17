@@ -1,0 +1,18 @@
+name = "errorcloud-api"
+main = "worker.js"
+compatibility_date = "2026-11-01"
+
+# Blind storage for Errorcloud. R2 is preferred: enable R2 in the Cloudflare
+# dashboard, create the bucket and uncomment the block below — the Worker picks
+# up BUCKET automatically. Workers KV is the current fallback.
+
+# [[r2_buckets]]
+# binding = "BUCKET"
+# bucket_name = "errorcloud-storage"
+
+[[kv_namespaces]]
+binding = "VAULT_KV"
+id = "8dc1003e22944b0f9c70d9a38a5706e7"
+
+[observability]
+enabled = true
