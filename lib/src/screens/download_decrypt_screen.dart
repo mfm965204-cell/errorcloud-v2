@@ -180,7 +180,11 @@ class _DownloadDecryptScreenState extends State<DownloadDecryptScreen> {
                       )
                     : const Text(
                         'Download & Decrypt',
-                        style: TextStyle(fontWeight: FontWeight.w600),
+                        style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w600,
+                          color: CupertinoColors.white,
+                        ),
                       ),
               ),
             ),

@@ -138,6 +138,18 @@ Download `app-release.apk` from the latest successful Actions run, allow
 with a CI-generated debug-style key, so Play Protect may warn — that is normal
 for sideloaded builds.
 
+## Changelog
+
+**1.0.1** — Release builds now declare `android.permission.INTERNET`. The
+Flutter template only adds it to the debug/profile manifests, so v1.0.0 shipped
+without network access and every upload failed with *"Failed host lookup"*.
+`tools/patch_android.py` now injects `INTERNET` and `ACCESS_NETWORK_STATE` and
+fails the build if they are missing. Filled buttons also got explicit white
+labels, and DNS failures now show a readable message.
+
+**1.0.0** — First build: AES-256-GCM vault, Cupertino UI, certificate pinning,
+Cloudflare blind storage.
+
 ## Notes and limits
 
 * `flutter/cupertino.dart` is marked deprecated in favour of `cupertino_ui` in

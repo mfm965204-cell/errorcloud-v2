@@ -205,7 +205,11 @@ class _EncryptUploadScreenState extends State<EncryptUploadScreen> {
                 onPressed: _busy ? null : _pickFile,
                 child: const Text(
                   'Select File',
-                  style: TextStyle(fontWeight: FontWeight.w600),
+                  style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w600,
+                    color: CupertinoColors.white,
+                  ),
                 ),
               ),
             ),
@@ -221,9 +225,15 @@ class _EncryptUploadScreenState extends State<EncryptUploadScreen> {
                     ? const CupertinoActivityIndicator(
                         color: CupertinoColors.white,
                       )
-                    : const Text(
+                    : Text(
                         'Encrypt & Upload',
-                        style: TextStyle(fontWeight: FontWeight.w600),
+                        style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w600,
+                          color: hasFile
+                              ? CupertinoColors.white
+                              : CupertinoColors.tertiaryLabel,
+                        ),
                       ),
               ),
             ),

@@ -47,6 +47,17 @@ class PinnedApiClient {
     return AppConfig.pinnedFingerprints.contains(fingerprint);
   }
 
+  static ApiException _networkException(SocketException error) {
+    final String message = error.message;
+    if (message.contains('Failed host lookup')) {
+      return const ApiException(
+        'Cannot reach the vault host. Check your internet connection (or your '
+        'network is blocking workers.dev) and try again.',
+      );
+    }
+    return ApiException('Network error: $message');
+  }
+
   Future<String> upload(Uint8List blob) async {
     final http.Response response;
     try {
@@ -64,7 +75,7 @@ class PinnedApiClient {
         'TLS pin mismatch — the server certificate is not the pinned one.',
       );
     } on SocketException catch (error) {
-      throw ApiException('Network error: ${error.message}');
+      throw _networkException(error);
     }
 
     if (response.statusCode != 200) {
@@ -89,7 +100,7 @@ class PinnedApiClient {
         'TLS pin mismatch — the server certificate is not the pinned one.',
       );
     } on SocketException catch (error) {
-      throw ApiException('Network error: ${error.message}');
+      throw _networkException(error);
     }
 
     if (response.statusCode == 404) {
